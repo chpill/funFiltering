@@ -81,6 +81,18 @@ filters.redFilter = (pixels) ->
     #
   pixels
 
+filters.greenFilter = (pixels) ->
+  d = pixels.data
+  for r, i in d by 4
+    # r = d[i]
+    g = d[i+1]
+    b = d[i+2]
+    if g<50 or r>50 or b>50
+      v = (0.2126*r + 0.7152*g + 0.0722*b)
+      d[i] = d[i+1] = d[i+2] = v
+    #
+  pixels
+
 
 
 # Test functions
@@ -104,4 +116,8 @@ filters.testContrast = (canvas, args) ->
 
 filters.testRedFilter = (canvas) ->
   idata = filters.filterImage(filters.redFilter, canvas)
+  canvas.context.putImageData(idata,0,0)
+
+filters.testGreenFilter = (canvas) ->
+  idata = filters.filterImage(filters.greenFilter, canvas)
   canvas.context.putImageData(idata,0,0)

@@ -6,11 +6,11 @@ window.app = app
 # TODO, dynamically load an image
 initCv = ->
   #src = 'assets/images/funkadelic20-20clinton.jpg'
-  #src = 'assets/images/mountain.jpg'
+  src = 'assets/images/mountain.jpg'
   #src = 'assets/images/cat.jpg'
   #src = 'assets/images/smoke.jpg'
   #src = 'assets/images/sunset.jpg'
-  src = 'assets/images/leaf.jpg'
+  #src = 'assets/images/leaf.jpg'
   canvas = document.getElementById("cv")
   app.cv = new Canvas(canvas, src)
 
@@ -30,6 +30,10 @@ window.onload = ->
 
   document.getElementById("redFilter").onclick = ->
     filters.testRedFilter(app.cv)
+
+  document.getElementById("greenFilter").onclick = ->
+    filters.testGreenFilter(app.cv)
+
 
   document.getElementById("sepia").onclick = ->
     depth = parseInt(document.getElementById("sepiaDepthValue").value)
